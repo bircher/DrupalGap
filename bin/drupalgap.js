@@ -126,6 +126,9 @@ function drupalgap_onload() {
     }
     // Add PhoneGap's deviceready listener.
     document.addEventListener('deviceready', _drupalgap_deviceready, false);
+    
+    document.addEventListener("offline", _drupalgap_onOffline, false);
+    document.addEventListener("online", _drupalgap_onOnline, false);
   }
   catch (error) { console.log('drupalgap_onload - ' + error); }
 }
@@ -212,6 +215,20 @@ function _drupalgap_deviceready() {
     }
   }
   catch (error) { console.log('_drupalgap_deviceready - ' + error); }
+}
+
+/**
+ * "online" addEventListener callback.
+ */
+function _drupalgap_onOffline() {
+  drupalgap.online = false;
+}
+
+/**
+ * "online" addEventListener callback.
+ */
+function _drupalgap_onOnline() {
+  drupalgap.online = true;
 }
 
 /**
