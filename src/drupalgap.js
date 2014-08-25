@@ -218,10 +218,11 @@ function _drupalgap_deviceready() {
 }
 
 /**
- * "online" addEventListener callback.
+ * "offline" addEventListener callback.
  */
 function _drupalgap_onOffline() {
   drupalgap.online = false;
+  module_invoke_all('device_switch_offline');
 }
 
 /**
@@ -229,6 +230,7 @@ function _drupalgap_onOffline() {
  */
 function _drupalgap_onOnline() {
   drupalgap.online = true;
+  module_invoke_all('device_switch_online');
 }
 
 /**
